@@ -1,0 +1,62 @@
+<form hx-post="/create_conta" 
+      hx-target="#result-container" 
+      hx-swap="innerHTML"
+      hx-indicator="#loading"
+      class="space-y-4">
+
+  <div id="loading" class="htmx-indicator">
+    <div class="spinner">Criando conta...</div>
+  </div>
+
+  <div class="form-group">
+    <label for="conta_Pessoa_id">Pessoa</label>
+    <select name="conta[Pessoa_id]" id="conta_Pessoa_id" class="form-select">
+      <option value="">Selecione uma pessoa</option>
+      <% @pessoas.each do |pessoa| %>
+        <option value="<%= pessoa.id %>"><%= pessoa.nome %></option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="conta_saldo">Saldo Inicial</label>
+    <input type="number" 
+           name="conta[saldo]" 
+           id="conta_saldo" 
+           step="0.01" 
+           class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="conta_limiteSaqueDiario">Limite de Saque Diário</label>
+    <input type="number" 
+           name="conta[limiteSaqueDiario]" 
+           id="conta_limiteSaqueDiario" 
+           step="0.01" 
+           class="form-input">
+  </div>
+
+  <div class="form-group">
+    <label for="conta_tipoConta">Tipo de Conta</label>
+    <select name="conta[tipoConta]" id="conta_tipoConta" class="form-select">
+      <option value="">Selecione o tipo de conta</option>
+      <option value="1">Conta Corrente</option>
+      <option value="2">Poupança</option>
+      <option value="3">Investimento</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label class="inline-flex items-center">
+      <input type="checkbox" 
+             name="conta[flagAtivo]" 
+             id="conta_flagAtivo" 
+             class="form-checkbox">
+      <span class="ml-2">Conta Ativa?</span>
+    </label>
+  </div>
+
+  <button type="submit" class="btn btn-primary">
+    Criar Conta
+  </button>
+</form> 

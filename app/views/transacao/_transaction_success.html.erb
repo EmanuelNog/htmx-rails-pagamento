@@ -1,0 +1,8 @@
+<div class="transaction-success">
+  <h3>Transação Realizada com Sucesso!</h3>
+  <div class="transaction-info">
+    <p>Conta: <%= conta.pessoa.nome %></p>
+    <p>Valor: <%= number_to_currency(valor) %></p>
+    <p>Novo Saldo: <%= number_to_currency(conta.saldo) %></p>
+  </div>
+</div> 

@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  saldo: 9.99
+  limiteSaqueDiario: 9.99
+  flagAtivo: false
+  tipoConta: 1
+  dataCriacao: 2025-03-05 00:39:25
+  Pessoa: one
+
+two:
+  saldo: 9.99
+  limiteSaqueDiario: 9.99
+  flagAtivo: false
+  tipoConta: 1
+  dataCriacao: 2025-03-05 00:39:25
+  Pessoa: two

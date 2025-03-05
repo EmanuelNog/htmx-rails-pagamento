@@ -1,0 +1,75 @@
+<form hx-post="/conta" 
+      hx-target="#contas-list"
+      hx-swap="innerHTML"
+      hx-indicator="#loading">
+
+  <div id="loading" class="htmx-indicator">
+    <div class="spinner">Criando conta...</div>
+  </div>
+
+  <div class="form-group">
+    <label for="conta_Pessoa_id">Titular da Conta</label>
+    <select name="conta[Pessoa_id]" 
+            id="conta_Pessoa_id" 
+            class="form-input"
+            required>
+      <option value="">Selecione uma pessoa</option>
+      <% @pessoas.each do |pessoa| %>
+        <option value="<%= pessoa.id %>">
+          <%= pessoa.nome %> - CPF: <%= pessoa.cpf %>
+        </option>
+      <% end %>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="conta_saldo">Saldo Inicial</label>
+    <input type="number" 
+           name="conta[saldo]" 
+           id="conta_saldo" 
+           step="0.01" 
+           class="form-input"
+           required>
+  </div>
+
+  <div class="form-group">
+    <label for="conta_limiteSaqueDiario">Limite de Saque Diário</label>
+    <input type="number" 
+           name="conta[limiteSaqueDiario]" 
+           id="conta_limiteSaqueDiario" 
+           step="0.01" 
+           class="form-input"
+           required>
+  </div>
+
+  <div class="form-group">
+    <label for="conta_tipoConta">Tipo de Conta</label>
+    <select name="conta[tipoConta]" 
+            id="conta_tipoConta" 
+            class="form-input"
+            required>
+      <option value="">Selecione o tipo de conta</option>
+      <option value="1">Conta Corrente</option>
+      <option value="2">Poupança</option>
+      <option value="3">Investimento</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label class="checkbox-label">
+      <input type="hidden" name="conta[flagAtivo]" value="0">
+      <input type="checkbox" 
+             name="conta[flagAtivo]" 
+             id="conta_flagAtivo" 
+             value="1"
+             checked
+             class="form-checkbox">
+      <span>Permitir Transações</span>
+    </label>
+    <p class="form-help-text">Marque esta opção para permitir que a conta realize transações</p>
+  </div>
+
+  <button type="submit" class="btn btn-primary">
+    Criar Conta
+  </button>
+</form> 

@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Gerenciar Pessoas</h1>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Nova Pessoa</h2>
+      <%= render 'form', pessoa: @pessoa %>
+    </div>
+
+    <div class="card">
+      <h2>Pessoas Cadastradas</h2>
+      <div id="pessoas-list">
+        <%= render 'pessoas_list', pessoas: @pessoas %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container">
+  <h1>Consulta de Transações</h1>
+
+  <div class="grid">
+    <div class="card">
+      <h2>Selecionar Conta</h2>
+      <div class="form-group">
+        <label for="conta_id">Conta</label>
+        <select name="conta_id" 
+                id="conta_id" 
+                class="form-input"
+                hx-get="/transacoes"
+                hx-target="#transactions-container"
+                hx-trigger="change"
+                hx-include-vals="true"
+                hx-swap="innerHTML"
+                required>
+          <option value="">Selecione uma conta</option>
+          <% @contas.each do |conta| %>
+            <option value="<%= conta.id %>" <%= 'selected' if params[:conta_id].to_i == conta.id %>>
+              <%= conta.pessoa.nome %> - Saldo: <%= number_to_currency(conta.saldo) %>
+            </option>
+          <% end %>
+        </select>
+      </div>
+    </div>
+
+    <div id="transactions-container" class="card">
+      <h2>Histórico de Transações</h2>
+      <% if @transacoes.any? %>
+        <div class="transactions-list">
+          <% @transacoes.each do |transacao| %>
+            <div class="transaction-item">
+              <div class="transaction-content">
+                <div class="transaction-amount <%= transacao.valor > 0 ? 'credit' : 'debit' %>">
+                  <%= transacao.valor > 0 ? '+' : '' %>
+                  <%= number_to_currency(transacao.valor) %>
+                </div>
+                <div class="transaction-date">
+                  <%= transacao.created_at.strftime("%d/%m/%Y %H:%M") %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <p class="empty-message">
+          <%= params[:conta_id].present? ? "Nenhuma transação encontrada para esta conta." : "Selecione uma conta para ver o histórico de transações." %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div> 

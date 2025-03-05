@@ -1,0 +1,22 @@
+<div class="pessoas-list">
+  <% pessoas.each do |pessoa| %>
+    <div class="pessoa-item">
+      <div class="pessoa-content">
+        <div>
+          <h3><%= pessoa.nome %></h3>
+          <div class="pessoa-info">
+            <p>CPF: <%= pessoa.cpf %></p>
+            <p>Data de Nascimento: <%= pessoa.dataNascimento.strftime("%d/%m/%Y") %></p>
+          </div>
+        </div>
+        <div class="pessoa-date">
+          <%= pessoa.created_at.strftime("Cadastrado em %d/%m/%Y") %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if pessoas.empty? %>
+  <p class="empty-message">Nenhuma pessoa cadastrada.</p>
+<% end %> 

@@ -1,0 +1,38 @@
+<div class="contas-list">
+  <% contas.each do |conta| %>
+    <div class="conta-item">
+      <div class="conta-content">
+        <div>
+          <h3><%= conta.pessoa.nome %></h3>
+          <div class="conta-info">
+            <p>Saldo: <%= number_to_currency(conta.saldo) %></p>
+            <p>Limite de Saque: <%= number_to_currency(conta.limiteSaqueDiario) %></p>
+            <p>Tipo: <%= 
+              case conta.tipoConta
+              when 1 then "Conta Corrente"
+              when 2 then "Poupança"
+              when 3 then "Investimento"
+              end
+            %></p>
+            <div class="status-control">
+              <span>Status:</span>
+              <button class="btn btn-status <%= conta.flagAtivo ? 'active' : 'inactive' %>"
+                      hx-put="/conta/<%= conta.id %>/toggle_status"
+                      hx-target="#contas-list"
+                      hx-swap="innerHTML">
+                <%= conta.flagAtivo ? "Ativa" : "Inativa" %>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="conta-date">
+          <%= conta.created_at.strftime("Criada em %d/%m/%Y") %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<% if contas.empty? %>
+  <p class="empty-message">Nenhuma conta cadastrada.</p>
+<% end %> 

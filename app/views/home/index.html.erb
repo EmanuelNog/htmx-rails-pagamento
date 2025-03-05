@@ -1,0 +1,58 @@
+<!-- Button for loading content using HTMX -->
+<button hx-get="/home/load_content" hx-trigger="click" hx-target="#content" hx-swap="innerHTML">
+  Load Content
+</button>
+
+<div id="content">
+  <div id="inncontent">
+  </div>
+  <!-- Dynamically loaded content will appear here -->
+</div>
+<form hx-post="/home/submit_data" hx-trigger="submit" hx-target="#post-result" hx-swap="innerHTML">
+  <input type="text" name="user_data" placeholder="Enter some data">
+  <button type="submit">Submit Data</button>
+</form>
+<%#
+<form>
+  <input type="text" name="user_data" placeholder="Enter some data">
+  <button hx-post="/home/submit_data" hx-trigger="click" hx-target="#post-result" hx-swap="innerHTML">Submit Data</button>
+</form>
+%>
+
+<div id="post-result">
+
+</div>
+
+<div class="container">
+  <h1>Sistema Bancário</h1>
+  
+  <div class="home-grid">
+    <a href="/pessoa" 
+       class="nav-button"
+       hx-boost="true">
+      <span class="nav-title">Gerenciar Pessoas</span>
+      <span class="nav-description">Cadastrar e visualizar pessoas</span>
+    </a>
+
+    <a href="/conta" 
+       class="nav-button"
+       hx-boost="true">
+      <span class="nav-title">Gerenciar Contas</span>
+      <span class="nav-description">Criar e gerenciar contas bancárias</span>
+    </a>
+
+    <a href="/transacao" 
+       class="nav-button"
+       hx-boost="true">
+      <span class="nav-title">Gerenciar Transações</span>
+      <span class="nav-description">Realizar e visualizar transações bancárias</span>
+    </a>
+
+    <a href="/transacoes" 
+       class="nav-button"
+       hx-boost="true">
+      <span class="nav-title">Consultar Transações</span>
+      <span class="nav-description">Visualizar histórico de transações por conta</span>
+    </a>
+  </div>
+</div>
