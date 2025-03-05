@@ -32,7 +32,7 @@
           <% @transacoes.each do |transacao| %>
             <div class="transaction-item">
               <div class="transaction-content">
-                <div class="transaction-amount <%= transacao.valor > 0 ? 'credit' : 'debit' %>">
+                <div class="transaction-amount">
                   <%= transacao.valor > 0 ? '+' : '' %>
                   <%= number_to_currency(transacao.valor) %>
                 </div>

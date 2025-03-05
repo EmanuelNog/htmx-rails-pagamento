@@ -2,7 +2,7 @@
   <h1>Nova Transação</h1>
 
   <div class="card">
-    <form hx-post="/transacao/deposit"
+    <form hx-post="/transacao/create"
           hx-target="#result-container"
           hx-swap="innerHTML">
       
@@ -26,8 +26,6 @@
         <input type="number"
                name="valor"
                id="valor"
-               step="0.01"
-               min="0.01"
                class="form-input"
                required>
       </div>

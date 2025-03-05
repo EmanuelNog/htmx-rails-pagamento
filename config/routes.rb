@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # Transacao routes
   get "/transacao", to: "transacao#index"
   get "/transacao/show_history", to: "transacao#show_history"
-  post "/transacao/deposit", to: "transacao#deposit"
+  post "/transacao/create", to: "transacao#create"
   get "/transacoes", to: "transacao#list"
 
   # Conta routes

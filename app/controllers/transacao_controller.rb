@@ -18,11 +18,11 @@ class TransacaoController < ApplicationController
     }
   end
 
-  def deposit
+  def create
     @conta = Conta.find(params[:conta_id])
     
     unless @conta.flagAtivo
-      render json: { error: 'Não é possível depositar em uma conta inativa' }, status: :unprocessable_entity
+      render json: { error: 'Não é possível realizar transação em uma conta inativa' }, status: :unprocessable_entity
       return
     end
 

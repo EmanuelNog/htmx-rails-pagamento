@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Rails Htmx Pagproject" %></title>
+    <title>Sistema de Pagamento</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -21,9 +21,24 @@
     <%= stylesheet_link_tag :app %>
     <%= javascript_importmap_tags %>
     <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+
+    <!-- Simple.css CDN -->
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/pessoa">Pessoas</a>
+        <a href="/conta">Contas</a>
+        <a href="/transacao">Transações</a>
+        <a href="/transacoes">Histórico</a>
+      </nav>
+    </header>
+
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

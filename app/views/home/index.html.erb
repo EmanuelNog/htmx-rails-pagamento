@@ -1,30 +1,5 @@
-<!-- Button for loading content using HTMX -->
-<button hx-get="/home/load_content" hx-trigger="click" hx-target="#content" hx-swap="innerHTML">
-  Load Content
-</button>
-
-<div id="content">
-  <div id="inncontent">
-  </div>
-  <!-- Dynamically loaded content will appear here -->
-</div>
-<form hx-post="/home/submit_data" hx-trigger="submit" hx-target="#post-result" hx-swap="innerHTML">
-  <input type="text" name="user_data" placeholder="Enter some data">
-  <button type="submit">Submit Data</button>
-</form>
-<%#
-<form>
-  <input type="text" name="user_data" placeholder="Enter some data">
-  <button hx-post="/home/submit_data" hx-trigger="click" hx-target="#post-result" hx-swap="innerHTML">Submit Data</button>
-</form>
-%>
-
-<div id="post-result">
-
-</div>
-
 <div class="container">
-  <h1>Sistema Bancário</h1>
+  <h1>Sistema de Pagamento</h1>
   
   <div class="home-grid">
     <a href="/pessoa" 
